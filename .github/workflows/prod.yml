@@ -30,6 +30,7 @@ jobs:
                 PAT: ${{ secrets.DOCKER_PAT }}
               run: |
                 git clone https://github.com/saatvik-10/k8s.git
+                cd k8s
 
                 sed -i 's|image: saatvik10/k8s-e2e:*|image: saatvik10/k8s-e2e:${{ github.sha }}|' manifest.yml
 
