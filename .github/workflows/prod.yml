@@ -32,7 +32,7 @@ jobs:
                 git clone https://github.com/saatvik-10/k8s.git
                 cd k8s
 
-                sed -i 's|image: saatvik10/k8s-e2e:.*|image: saatvik10/k8s-e2e:${{ github.sha }}|' manifest.yml
+                sed -i "s|image: saatvik10/k8s-e2e:.*|image: saatvik10/k8s-e2e:${{ github.sha }}|" manifest.yml
 
                 git config user.name "Github Actions Bot"
                 git config user.email "actions@github.com"
