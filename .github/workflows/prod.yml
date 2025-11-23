@@ -27,7 +27,7 @@ jobs:
             
             - name: Cloning the repo, updating the image and pushing tags
               env:
-                PAT: ${{ secrets.DOCKER_PAT }}
+                PAT: ${{ secrets.PAT }}
               run: |
                 git clone https://github.com/saatvik-10/k8s.git
                 cd k8s
