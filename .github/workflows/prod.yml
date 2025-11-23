@@ -24,3 +24,17 @@ jobs:
                   file: Dockerfile
                   push: true
                   tags: saatvik10/k8s-e2e:${{ github.sha }}
+            
+            - name: Cloning the repo, updating the image and pushing tags
+              env:
+                PAT: ${{ secrets.DOCKER_PAT }}
+              run: |
+                git clone https://github.com/saatvik-10/k8s.git
+
+                sed -i 's|image: saatvik10/k8s-e2e:*|image: saatvik10/k8s-e2e:${{ github.sha }}|' manifest.yml
+
+                git config user.name "Github Actions Bot
+                git config user.email "actions@github.com"
+                git add .
+                git commit -m "updated k8s server image tags to ${{ github.sha }}"
+                git push https://${PAT}@github.com/saatvik-10/k8s.git main
